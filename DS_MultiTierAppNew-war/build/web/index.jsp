@@ -32,7 +32,7 @@
         
         
         
-        <table id="employeeList" class="striped">
+        <table id="employeeList" class="striped centered">
         <thead>
           <tr>
               <th>First Name</th>
