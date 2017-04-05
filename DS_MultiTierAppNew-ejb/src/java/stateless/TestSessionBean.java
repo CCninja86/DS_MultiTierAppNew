@@ -4,13 +4,23 @@
  * and open the template in the editor.
  */
 package stateless;
-import javax.ejb.Remote;
+
+import javax.ejb.Stateless;
+import javax.ejb.LocalBean;
+
 /**
  *
  * @author Michael
  */
-@Remote
-public interface TestSessionBean {
-    public String getMsg();
-    
+@Stateless
+
+public class TestSessionBean implements TestSessionBeanRemote{
+
+    @Override
+    public String getMsg() {
+        return "Hello EJB TEST";
+    }
+
+    // Add business logic below. (Right-click in editor and choose
+    // "Insert Code > Add Business Method")
 }

@@ -7,21 +7,16 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import stateless.TestSessionBean;
 
 /**
  *
  * @author Michael
  */
-public class NewServlet extends HttpServlet {
-
-    @EJB
-    private TestSessionBean testEJB;
+public class ModifyUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +35,10 @@ public class NewServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
+            out.println("<title>Servlet ModifyUser</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ModifyUser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

@@ -8,6 +8,10 @@
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>servlets.NewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModifyUser</servlet-name>
+        <servlet-class>servlets.ModifyUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/TestServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyUser</servlet-name>
+        <url-pattern>/ModifyUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
