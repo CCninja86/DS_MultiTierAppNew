@@ -4,7 +4,7 @@
     Author     : Michael
 --%>
 
-<%@page import="stateless.Database"%>
+
 <%@page import="models.Employee"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,7 +27,7 @@
         <nav>
             <div class="nav-wrapper red darken-2">
                 <a class="brand-logo center">Employee View</a>
-                <a href="NewServlet">Click Here to call the EJB Component</a>
+              
             </div>
         </nav>  
 
@@ -40,6 +40,7 @@
         <table id="employeeList" class="striped centered">
             <thead>
                 <tr>
+                    <th>Employee ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Birth Date</th>
@@ -54,38 +55,16 @@
                  ArrayList<Employee> employees = (ArrayList) myEmployeeBean.getEmployees(50);
                  for (Employee current : employees) {
                     out.print("<tr>");
+                    out.print("<td>" + current.getId() + "</td>");
                     out.print("<td>" + current.getFirstName() + "</td>");
                     out.print("<td>" + current.getLastName() + "</td>");
                     out.print("<td>" + current.getBirthDate() + "</td>");
                     out.print("<td>" + current.getGender() + "</td>");
                     out.print("<td>" + current.getHireDate() + "</td>");
-                    out.print("<td><a href=\"EditUser.jsp\" class=\"waves-effect waves-light btn red darken-2\">Edit employee</a><td>");
+                    out.print("<td><a href=\"EditUser.jsp?id=" + current.getId()+ "\" class=\"waves-effect waves-light btn red darken-2\">Edit employee</a><td>");
                     }%>
 
-                <tr>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>02.03.1993</td>
-                    <td>Male</td>
-                    <td>02.08.1991</td>
-                    <td><a href="EditUser.jsp" class="waves-effect waves-light btn red darken-2">Edit employee</a><td>
-                </tr>
-                <tr>
-                    <td>Alan</td>
-                    <td>Jellybean</td>
-                    <td>02.08.1991</td>
-                    <td>Male</td>
-                    <td>02.08.1991</td>
-                    <td><a href="EditUser.jsp" class="waves-effect waves-light btn red darken-2">Edit employee</a><td>
-                </tr>
-                <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>02.12.1943</td>
-                    <td>Male</td>
-                    <td>02.03.1993</td>
-                    <td><a href="EditUser.jsp" class="waves-effect waves-light btn red darken-2">Edit employee</a><td>
-                </tr>
+               
             </tbody>
         </table>
 

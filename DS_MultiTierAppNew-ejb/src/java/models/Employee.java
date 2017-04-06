@@ -21,6 +21,23 @@ public class Employee implements Serializable{
     private char gender;
     private Date hireDate;
 
+    public Employee(){
+        
+    }
+    
+    
+    public Employee(int id, Date birthDate, String firstName, String lastName, char gender, Date hireDate) {
+        this.id = id;
+        this.birthDate = birthDate;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.hireDate = hireDate;
+    }
+
+    
+    
+    
     public int getId() {
         return id;
     }

@@ -6,17 +6,33 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.Statement;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import com.mysql.jdbc.Driver;
+import java.io.PrintWriter;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.Employee;
 /**
  *
  * @author Michael
  */
 public class ModifyUser extends HttpServlet {
+
+    private String url = "jdbc:mysql://dms-sydney-db.cjztu35wlump.ap-southeast-2.rds.amazonaws.com:3306/employees";
+    private String username = "dms_server_user";
+    private String pass = "dQ5A57UAWV8iwhEKTrid";
+
+    private Connection connection;
+    private Statement statement;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,19 +45,30 @@ public class ModifyUser extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ModifyUser</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ModifyUser at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            
+            
+            new Driver();
+            connection = DriverManager.getConnection(url, username, pass);
+            statement = connection.createStatement();
+            
+            String changedName = request.getParameter("first_name");
+            String changedLastName = request.getParameter("last_name");
+            
+            Employee updatedEmployee = new Employee();
+           
+            //@TODO: Implement Database Update
+             
+           // ResultSet resultSet = statement.executeUpdate("UPDATE ")
+            
+           
+            //RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/index.jsp");
+            //RequetsDispatcherObj.forward(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModifyUser.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

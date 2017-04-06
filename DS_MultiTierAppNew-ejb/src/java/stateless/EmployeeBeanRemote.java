@@ -8,7 +8,6 @@ package stateless;
 import java.util.List;
 import javax.ejb.Remote;
 import models.Employee;
-import models.Department;
 
 /**
  *
@@ -18,5 +17,5 @@ import models.Department;
 public interface EmployeeBeanRemote {
     
     List<Employee> getEmployees(int limit);
-    
+    Employee getEmployeeById(int id);
 }

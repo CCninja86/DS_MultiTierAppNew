@@ -5,6 +5,7 @@
     @TODO: Load Userdata to modify into inputfields!
 --%>
 
+<%@page import="models.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,8 +21,8 @@
 
     </head>
     <body>
-        <jsp:useBean id="myTestSessionBean" class="stateless.TestSessionBean" scope="session"/>
-          
+        <jsp:useBean id="myEmployeeBean" class="stateless.EmployeeBean" scope="session"/>
+
         <nav>
             <div class="nav-wrapper red darken-2">
                 <a class="brand-logo center">Modify User</a>
@@ -31,27 +32,32 @@
             </div>
         </nav>  
 
+        <%
+            int id = Integer.valueOf(request.getParameter("id"));
+
+            Employee requestedEmployee = myEmployeeBean.getEmployeeById(id);
 
 
+        %>
 
 
         <div class="row">
-            <form class="col s12">
+            <form action="ModifyUser" method="post" class="col s12">
                 <div class="row">
-                    <% out.println(myTestSessionBean.getMsg()); %>
+
                     <div class="input-field col s6">
-                        <input id="first_name" type="text" class="validate">
+                        <input id="first_name" name="first_name" type="text" value="<% out.print(requestedEmployee.getFirstName()); %>" class="validate">
                         <label for="first_name">First Name</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="last_name" type="text" class="validate">
+                        <input id="last_name" name="last_name" type="text" value="<% out.print(requestedEmployee.getLastName());%>" class="validate">
                         <label for="last_name">Last Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
                         <label>Gender</label>
-                        <select class="browser-default">
+                        <select name="gender" class="browser-default">
                             <option value="" disabled selected>Choose your option</option>  
                             <option value="M">Male</option>
                             <option value="F">Female</option>
@@ -60,7 +66,7 @@
                     </div>
                     <div class="col s6">
                         <label>Birthdate</label>
-                        <input type="date">
+                        <input name="birthdate" type="date">
 
                     </div>
                 </div>
@@ -68,7 +74,7 @@
                 <div class="row">
                     <div class="col s6">
                         <label>Hire Date</label>
-                        <input type="date">
+                        <input name="hiredate" type="date">
                     </div>
 
                 </div>
@@ -76,7 +82,9 @@
                     <div class="col s9">
                     </div>
                     <div class="col s3">
-                        <a href="ModifyUser" class="waves-effect waves-light btn red darken-2">Submit</a>
+                        <button class="btn waves-effect waves-light red darken-2" type="submit" name="action">Submit
+                        </button>
+
                     </div>
                 </div>
             </form>
