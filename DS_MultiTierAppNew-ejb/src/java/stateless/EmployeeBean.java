@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
-import models.Department;
 import models.Employee;
+import com.mysql.jdbc.Driver;
 
 /**
  *
@@ -28,6 +28,7 @@ public class EmployeeBean implements EmployeeBeanRemote {
     private String url = "jdbc:mysql://dms-employee-db.cn8ktqpu4zgm.eu-central-1.rds.amazonaws.com:3306/employees";    
     private String username = "James";
     private String pass = "d8effaba4d";
+    
     private Connection connection;
     private Statement statement;
     
@@ -36,8 +37,8 @@ public class EmployeeBean implements EmployeeBeanRemote {
         List<Employee> employees = new ArrayList<Employee>();
         
         try {
-            
-            
+    
+            new Driver();
             connection = DriverManager.getConnection(url, username, pass);
             statement = connection.createStatement();
             
@@ -51,7 +52,7 @@ public class EmployeeBean implements EmployeeBeanRemote {
                 newEmployee.setBirthDate(resultSet.getDate(2));
                 newEmployee.setFirstName(resultSet.getString(3));
                 newEmployee.setLastName(resultSet.getString(4));
-                newEmployee.setGender((char) resultSet.getByte(5));
+                newEmployee.setGender((char) resultSet.getString(5).charAt(0));
                 newEmployee.setHireDate(resultSet.getDate(6));
                 
                 employees.add(newEmployee);

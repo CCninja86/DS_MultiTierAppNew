@@ -6,7 +6,6 @@
 package stateless;
 
 import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 
 /**
  *

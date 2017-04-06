@@ -20,6 +20,8 @@
 
     </head>
     <body>
+        <jsp:useBean id="myTestSessionBean" class="stateless.TestSessionBean" scope="session"/>
+          
         <nav>
             <div class="nav-wrapper red darken-2">
                 <a class="brand-logo center">Modify User</a>
@@ -36,6 +38,7 @@
         <div class="row">
             <form class="col s12">
                 <div class="row">
+                    <% out.println(myTestSessionBean.getMsg()); %>
                     <div class="input-field col s6">
                         <input id="first_name" type="text" class="validate">
                         <label for="first_name">First Name</label>

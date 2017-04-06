@@ -4,18 +4,90 @@
     Author     : Michael
 --%>
 
+<%@page import="stateless.Database"%>
+<%@page import="models.Employee"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Employee View</title>
+
+        <link rel="stylesheet" href="styles/css/materialize.min.css">
+        <link rel="stylesheet" href="styles/css/styles.css">
+        <script type="text/javascript" src="styles/js/jquery-2.1.1.min.js"></script>
+
+        <script type="text/javascript" src="styles/js/materialize.min.js"></script>
+
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <a href="TestServlet">Click Here to call the EJB Component</a>
-        
-        <% %>
-        
+        <jsp:useBean id="myEmployeeBean" class="stateless.EmployeeBean" scope="session"/>
+          
+        <nav>
+            <div class="nav-wrapper red darken-2">
+                <a class="brand-logo center">Employee View</a>
+                <a href="NewServlet">Click Here to call the EJB Component</a>
+            </div>
+        </nav>  
+
+
+    <body>
+
+
+
+
+        <table id="employeeList" class="striped centered">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                    <th>Gender</th>
+                    <th>Hire Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% 
+                 ArrayList<Employee> employees = (ArrayList) myEmployeeBean.getEmployees(50);
+                 for (Employee current : employees) {
+                    out.print("<tr>");
+                    out.print("<td>" + current.getFirstName() + "</td>");
+                    out.print("<td>" + current.getLastName() + "</td>");
+                    out.print("<td>" + current.getBirthDate() + "</td>");
+                    out.print("<td>" + current.getGender() + "</td>");
+                    out.print("<td>" + current.getHireDate() + "</td>");
+                    out.print("<td><a href=\"EditUser.jsp\" class=\"waves-effect waves-light btn red darken-2\">Edit employee</a><td>");
+                    }%>
+
+                <tr>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>02.03.1993</td>
+                    <td>Male</td>
+                    <td>02.08.1991</td>
+                    <td><a href="EditUser.jsp" class="waves-effect waves-light btn red darken-2">Edit employee</a><td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>02.08.1991</td>
+                    <td>Male</td>
+                    <td>02.08.1991</td>
+                    <td><a href="EditUser.jsp" class="waves-effect waves-light btn red darken-2">Edit employee</a><td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>02.12.1943</td>
+                    <td>Male</td>
+                    <td>02.03.1993</td>
+                    <td><a href="EditUser.jsp" class="waves-effect waves-light btn red darken-2">Edit employee</a><td>
+                </tr>
+            </tbody>
+        </table>
+
     </body>
 </html>
