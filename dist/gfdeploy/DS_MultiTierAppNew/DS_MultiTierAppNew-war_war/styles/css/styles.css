@@ -11,3 +11,11 @@ and open the template in the editor.
 nav{
      margin-bottom: 1cm;
 }
+
+
+
+.header{
+    background-image: url(../img/bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+}

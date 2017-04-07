@@ -37,14 +37,14 @@
 
             Employee requestedEmployee = myEmployeeBean.getEmployeeById(id);
 
-
+            
         %>
 
 
         <div class="row">
             <form action="ModifyUser" method="post" class="col s12">
                 <div class="row">
-
+                    <input type="hidden" name="id" value="<%out.print(id);%>" />
                     <div class="input-field col s6">
                         <input id="first_name" name="first_name" type="text" value="<% out.print(requestedEmployee.getFirstName()); %>" class="validate">
                         <label for="first_name">First Name</label>
@@ -58,15 +58,23 @@
                     <div class="col s6">
                         <label>Gender</label>
                         <select name="gender" class="browser-default">
-                            <option value="" disabled selected>Choose your option</option>  
+                            <option value="" disabled selected>Choose your option</option>
+                            <% if(requestedEmployee.getGender() == 'M'){
+                                out.println("<option value=\"M\" selected>Male</option>");
+                                out.println("<option value=\"F\">Female</option>");
+                            }else{
+                                out.println("<option value=\"F\" selected>Female</option>");
+                                out.println("<option value=\"M\" >Male</option>");
+                            }
+                            %>
                             <option value="M">Male</option>
-                            <option value="F">Female</option>
+                            
                         </select>
 
                     </div>
                     <div class="col s6">
                         <label>Birthdate</label>
-                        <input name="birthdate" type="date">
+                        <input name="birthdate" value="<% out.print(requestedEmployee.getBirthDate());%>" type="date">
 
                     </div>
                 </div>
@@ -74,7 +82,7 @@
                 <div class="row">
                     <div class="col s6">
                         <label>Hire Date</label>
-                        <input name="hiredate" type="date">
+                        <input name="hiredate" value="<% out.print(requestedEmployee.getHireDate());%>" type="date">
                     </div>
 
                 </div>

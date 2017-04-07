@@ -56,7 +56,7 @@ public class ModifyUser extends HttpServlet {
             statement = connection.createStatement();
             ResultSet resultSet = null;
             
-            int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            int employeeID = Integer.parseInt((String) request.getParameter("id"));
             System.out.println(employeeID);
             String changedFirstName = request.getParameter("first_name");
             String changedLastName = request.getParameter("last_name");
