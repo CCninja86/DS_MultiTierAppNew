@@ -16,10 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.mysql.jdbc.Driver;
 import java.io.PrintWriter;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 import models.Employee;
 /**
  *
@@ -49,22 +51,43 @@ public class ModifyUser extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             
             
-            new Driver();
+           //new Driver();
             connection = DriverManager.getConnection(url, username, pass);
             statement = connection.createStatement();
+            ResultSet resultSet = null;
             
-            String changedName = request.getParameter("first_name");
+            int employeeID = Integer.parseInt(request.getParameter("employeeID"));
+            System.out.println(employeeID);
+            String changedFirstName = request.getParameter("first_name");
             String changedLastName = request.getParameter("last_name");
+            char changedGender = request.getParameter("gender").charAt(0);
+            
+            
             
             Employee updatedEmployee = new Employee();
-           
-            //@TODO: Implement Database Update
-             
-           // ResultSet resultSet = statement.executeUpdate("UPDATE ")
+            updatedEmployee.setFirstName(changedFirstName);
+            updatedEmployee.setLastName(changedLastName);
+            updatedEmployee.setGender(changedGender);
             
            
-            //RequestDispatcher RequetsDispatcherObj = request.getRequestDispatcher("/index.jsp");
-            //RequetsDispatcherObj.forward(request, response);
+            //@TODO: Implement Database Update
+
+            int success = statement.executeUpdate("UPDATE employees SET first_name = '" + updatedEmployee.getFirstName() + "'"
+                   + ", last_name = '" + updatedEmployee.getLastName() + "', gender = '" + updatedEmployee.getGender() + "' WHERE emp_no = " + employeeID + "");
+           
+            
+            HttpSession session = request.getSession(true);
+            session.setAttribute("employee", updatedEmployee);
+            // Check if update was successful
+            if(success > 0){
+                // Update was successful                
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/UpdateSuccessful.jsp");
+                requestDispatcher.forward(request, response);
+            } else {
+                // Update wasn't successful
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/UpdateUnsuccessful.jsp");
+                requestDispatcher.forward(request, response);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ModifyUser.class.getName()).log(Level.SEVERE, null, ex);
         }
