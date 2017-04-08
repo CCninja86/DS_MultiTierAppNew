@@ -69,6 +69,8 @@ public class GetDepartment extends HttpServlet {
             if(resultSet != null && resultSet.next()){
                 employeeFound = true;
             }
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(GetDepartment.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -78,7 +80,7 @@ public class GetDepartment extends HttpServlet {
         // If employee is found, get the department number of the department they are in
         if(employeeFound){
             try {
-                resultSet = statement.executeQuery("SELECT dept_no FROM dept_emp WHERE employees.emp_no = dept_emp.emp_no");
+                resultSet = statement.executeQuery("SELECT dept_no FROM dept_emp WHERE dept_emp.emp_no = " + employeeID);
                 
                 if(resultSet.next()){
                     departmentNumber = resultSet.getString("dept_no");
