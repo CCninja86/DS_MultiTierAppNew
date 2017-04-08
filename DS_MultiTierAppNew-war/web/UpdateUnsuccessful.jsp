@@ -12,9 +12,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Failed to Update Employee</h1>
+        <jsp:useBean id="employee" class="models.Employee" scope="session"/>
+        
+        <h1>Employee Not Updated</h1>
         <br>
         <br>
-        <p>Reason: </p>
+        <h1>Failed to Update Employee with ID <jsp:getProperty name="employee" property="id"/></h1>
+        <br>
+        <br>
+        <p>Reason: </p><%-- [TODO: Error Message Here] --%>
     </body>
 </html>

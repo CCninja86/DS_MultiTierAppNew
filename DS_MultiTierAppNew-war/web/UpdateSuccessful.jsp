@@ -18,7 +18,7 @@
         
         <jsp:useBean id="employee" class="models.Employee" scope="session"/>
         
-        <p>Employee has been sucessfully updated</p>
+        <p>Employee with ID <jsp:getProperty name="employee" property="id"/> has been successfully updated</p>
         <br>
         <br>
         <p>New First Name: </p><jsp:getProperty name="employee" property="firstName"/>
@@ -28,5 +28,11 @@
         <br>
         <br>
         <p>New Gender: </p><jsp:getProperty name="employee" property="gender"/>
+        <br>
+        <br>
+        <p>New Birth Date: </p><jsp:getProperty name="employee" property="birthDate"/>
+        <br>
+        <br>
+        <p>New Hire Date: </p><jsp:getProperty name="employee" property="hireDate"/>
     </body>
 </html>

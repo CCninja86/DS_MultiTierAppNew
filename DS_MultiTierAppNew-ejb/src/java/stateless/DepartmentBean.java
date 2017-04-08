@@ -44,7 +44,7 @@ public class DepartmentBean implements DepartmentBeanRemote {
             
             while(resultSet.next()){
                 newDepartment = new Department();
-                newDepartment.setId(resultSet.getInt(1));
+                newDepartment.setId(String.valueOf(resultSet.getInt(1)));
                 newDepartment.setName(resultSet.getString(2));
 
                 departments.add(newDepartment);
