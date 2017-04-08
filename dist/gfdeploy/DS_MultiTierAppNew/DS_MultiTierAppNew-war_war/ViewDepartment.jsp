@@ -26,8 +26,13 @@
         <jsp:useBean id="department" class="models.Department" scope="session"/>
 
         <br>
-        <div class="valign-wrapper">
-            <h5 class="valign center-align"><% out.print(department.getName());%></h5>
+        
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+        
+            <h5><% out.print(department.getName());%></h5>
+  
+            </div>
         </div>
 
         

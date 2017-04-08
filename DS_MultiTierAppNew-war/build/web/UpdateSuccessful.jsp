@@ -9,16 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        
+        <title>Employee <jsp:getProperty name="employee" property="id"/>  successfully updated!</title>
+
         <%@ include file="header.jsp" %>
     </head>
     <body>
-        
+
         <%-- Display response using employee bean properties --%>
-        
+
         <jsp:useBean id="employee" class="models.Employee" scope="session"/>
-        
+
         <nav>
             <div class="nav-wrapper red darken-2">
                 <a class="brand-logo center">Modify User</a>
@@ -27,22 +27,36 @@
                 </ul>
             </div>
         </nav>  
-        
-        <p>Employee with ID <jsp:getProperty name="employee" property="id"/> has been successfully updated</p>
-        <br>
-        <br>
-        <p>New First Name: </p><jsp:getProperty name="employee" property="firstName"/>
-        <br>
-        <br>
-        <p>New Last Name: </p><jsp:getProperty name="employee" property="lastName"/>
-        <br>
-        <br>
-        <p>New Gender: </p><jsp:getProperty name="employee" property="gender"/>
-        <br>
-        <br>
-        <p>New Birth Date: </p><jsp:getProperty name="employee" property="birthDate"/>
-        <br>
-        <br>
-        <p>New Hire Date: </p><jsp:getProperty name="employee" property="hireDate"/>
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                 <h4>Employee with ID <jsp:getProperty name="employee" property="id"/> has been successfully updated</h4>
+                 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Gender</th>
+                            <th>Birthdate</th>
+                            <th>Hiredate</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><jsp:getProperty name="employee" property="firstName"/></td>
+                            <td><jsp:getProperty name="employee" property="lastName"/></td>
+                            <td><jsp:getProperty name="employee" property="gender"/></td>
+                            <td><jsp:getProperty name="employee" property="birthDate"/></td>
+                            <td><jsp:getProperty name="employee" property="hireDate"/></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
     </body>
 </html>
