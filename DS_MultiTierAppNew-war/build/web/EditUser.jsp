@@ -13,11 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modify User</title>
 
-        <link rel="stylesheet" href="styles/css/materialize.min.css">
-        <link rel="stylesheet" href="styles/css/styles.css">
-        <script type="text/javascript" src="styles/js/jquery-2.1.1.min.js"></script>
-
-        <script type="text/javascript" src="styles/js/materialize.min.js"></script>
+        <%@ include file="header.jsp" %>
 
     </head>
     <body>
