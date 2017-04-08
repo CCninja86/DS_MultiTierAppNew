@@ -93,7 +93,7 @@ public class GetDepartment extends HttpServlet {
         // If the department number is not null/empty, get department name and number from departments table     
         if(!departmentNumber.isEmpty()){
             try {
-                resultSet = statement.executeQuery("SELECT * FROM departments WHERE departments.dept_no = " + departmentNumber);
+                resultSet = statement.executeQuery("SELECT * FROM departments WHERE departments.dept_no = '" + departmentNumber + "'");
                 
                 // If found, create the Department Bean
                 if(resultSet.next()){
