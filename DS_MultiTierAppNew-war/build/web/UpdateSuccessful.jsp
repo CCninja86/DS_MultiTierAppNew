@@ -10,9 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        
+        <%@ include file="header.jsp" %>
     </head>
     <body>
-        <h3>Employee Updated</h3>
         
         <%-- Display response using employee bean properties --%>
         
