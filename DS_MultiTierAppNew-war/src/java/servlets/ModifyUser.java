@@ -18,6 +18,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
@@ -60,19 +63,32 @@ public class ModifyUser extends HttpServlet {
             String changedFirstName = request.getParameter("first_name");
             String changedLastName = request.getParameter("last_name");
             char changedGender = request.getParameter("gender").charAt(0);
-            
-            
+            String birthDateString = request.getParameter("birthdate");
+            String hireDateString = request.getParameter("hiredate");
+            Date birthDate = Date.valueOf(birthDateString);
+            Date hireDate = Date.valueOf(hireDateString);
             
             Employee updatedEmployee = new Employee();
+            updatedEmployee.setId(employeeID);
             updatedEmployee.setFirstName(changedFirstName);
             updatedEmployee.setLastName(changedLastName);
-            updatedEmployee.setGender(changedGender);
+            updatedEmployee.setGender(changedGender); 
+            updatedEmployee.setBirthDate(birthDate);
+            updatedEmployee.setHireDate(hireDate);
+            
+            
+            
+                       
+            
             
            
+           System.out.println(updatedEmployee.getHireDate());
             //@TODO: Implement Database Update
 
             int success = statement.executeUpdate("UPDATE employees SET first_name = '" + updatedEmployee.getFirstName() + "'"
-                   + ", last_name = '" + updatedEmployee.getLastName() + "', gender = '" + updatedEmployee.getGender() + "' WHERE emp_no = " + employeeID + "");
+                   + ", last_name = '" + updatedEmployee.getLastName() + "', gender = '" + updatedEmployee.getGender() + "', "
+                           + "birth_date = DATE'" + updatedEmployee.getBirthDate() + "', hire_date = DATE'" + updatedEmployee.getHireDate() + "' "
+                                   + "WHERE emp_no = " + employeeID + "");
            
             
             HttpSession session = request.getSession(true);

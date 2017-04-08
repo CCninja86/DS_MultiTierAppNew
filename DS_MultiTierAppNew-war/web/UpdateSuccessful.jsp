@@ -18,6 +18,15 @@
         
         <jsp:useBean id="employee" class="models.Employee" scope="session"/>
         
+        <nav>
+            <div class="nav-wrapper red darken-2">
+                <a class="brand-logo center">Modify User</a>
+                <ul id="nav-mobile" class="right">
+                    <li><a href="index.jsp">View All Users</a></li>
+                </ul>
+            </div>
+        </nav>  
+        
         <p>Employee with ID <jsp:getProperty name="employee" property="id"/> has been successfully updated</p>
         <br>
         <br>
