@@ -12,6 +12,7 @@ package models;
 public class Department {
     private String id;
     private String name;
+    private Employee manager;
 
     public String getId() {
         return id;
@@ -27,6 +28,20 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return the manager
+     */
+    public Employee getManager() {
+        return manager;
+    }
+
+    /**
+     * @param manager the manager to set
+     */
+    public void setManager(Employee manager) {
+        this.manager = manager;
     }
     
 }

@@ -9,27 +9,22 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import models.Department;
-import models.Employee;
 
 /**
  *
  * @author james
  */
-@WebServlet(name = "GetDepartment", urlPatterns = {"/GetDepartment"})
-public class GetDepartment extends HttpServlet {
+@WebServlet(name = "GetSalaryStatistics", urlPatterns = {"/GetSalaryStatistics"})
+public class GetSalaryStatistics extends HttpServlet {
     
     private String url = "jdbc:mysql://dms-sydney-db.cjztu35wlump.ap-southeast-2.rds.amazonaws.com:3306/employees";
     private String username = "dms_server_user";
@@ -58,68 +53,7 @@ public class GetDepartment extends HttpServlet {
             Logger.getLogger(GetDepartment.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        int employeeID = Integer.parseInt(request.getParameter("id"));
         
-        ResultSet resultSet = null;
-        boolean employeeFound = false;
-        
-        try {
-            // Lookup Employee ID in Database
-            resultSet = statement.executeQuery("SELECT * FROM employees WHERE emp_no = " + employeeID);
-            
-            if(resultSet != null && resultSet.next()){
-                employeeFound = true;
-            }
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(GetDepartment.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        String departmentNumber = "";
-        
-        // If employee is found, get the department number of the department they are in
-        if(employeeFound){
-            try {
-                resultSet = statement.executeQuery("SELECT dept_no FROM dept_emp WHERE dept_emp.emp_no = " + employeeID);
-                
-                if(resultSet.next()){
-                    departmentNumber = resultSet.getString("dept_no");
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(GetDepartment.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        
-        Employee employee = new Employee();
-        employee.setId(employeeID);
-        
-        Department department = null;
-        // If the department number is not null/empty, get department name and number from departments table     
-        if(!departmentNumber.isEmpty()){
-            try {
-                resultSet = statement.executeQuery("SELECT * FROM departments WHERE departments.dept_no = '" + departmentNumber + "'");
-                
-                // If found, create the Department Bean
-                if(resultSet.next()){
-                    department = new Department();
-                    department.setId(resultSet.getString("dept_no"));
-                    department.setName(resultSet.getString("dept_name"));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(GetDepartment.class.getName()).log(Level.SEVERE, null, ex);
-            }            
-        }
-        
-        HttpSession session = request.getSession(true);
-        session.setAttribute("department", department);
-        session.setAttribute("employee", employee);
-        
-        if(department != null){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ViewDepartment.jsp");
-            requestDispatcher.forward(request, response);
-        }
         
     }
 

@@ -62,9 +62,7 @@
                                 out.println("<option value=\"F\" selected>Female</option>");
                                 out.println("<option value=\"M\" >Male</option>");
                             }
-                            %>
-                            <option value="M">Male</option>
-                            
+                            %>                            
                         </select>
 
                     </div>
