@@ -33,7 +33,7 @@
                 <!--<input type="text" id="userID" name="userID"/>-->
                 <br>
                 <br>
-                <select id="userID" name="userID" class="browser-default">
+                <select id="userID" name="userID" class="browser-default" required>
                     <option value="" disabled selected>Choose your Employee ID</option>
                     <%
 
@@ -44,6 +44,16 @@
                         }%>
 
                 </select>
+                <br>
+                <br>                
+                Please choose your preferred decimal display type:
+                <br>
+                <br>
+                <select id="decimalType" name="decimalType" class="browser-default" required>                    
+                    <option value="" disabled selected>Choose an option</option>
+                    <option value="dot">.</option>
+                    <option value="comma">,</option>
+                </select>                        
 
                 <br>
                 <div class="col s9">

@@ -37,9 +37,11 @@ public class AssignUser extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String userID = request.getParameter("userID");
+        String decimalType = request.getParameter("decimalType");
         
         User user = new User();
         user.setUserID(userID);
+        user.setDecimalType(decimalType);
         
         HttpSession session = request.getSession(true);
         session.setAttribute("user", user);

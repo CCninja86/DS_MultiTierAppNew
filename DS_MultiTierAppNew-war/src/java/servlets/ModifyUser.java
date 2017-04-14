@@ -72,7 +72,7 @@ public class ModifyUser extends HttpServlet {
               //Hiredate must not be before birthdate
             if(hireDate.before(birthDate)){
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/UpdateUnsuccessful.jsp");
-                request.setAttribute("ErrorMsg", "Hire date must be after dirth date");
+                request.setAttribute("ErrorMsg", "Hire date must be after birth date");
                 requestDispatcher.forward(request, response);
             }
             

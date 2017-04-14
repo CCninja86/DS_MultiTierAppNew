@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Michael Daschner
  */
-public class GetSaleriesStats extends HttpServlet {
+public class GetSalariesStats extends HttpServlet {
 
     private String url = "jdbc:mysql://dms-sydney-db.cjztu35wlump.ap-southeast-2.rds.amazonaws.com:3306/employees";
     private String username = "dms_server_user";
@@ -51,6 +51,7 @@ public class GetSaleriesStats extends HttpServlet {
         int currentSalary = 0, startSalary;
         int yearsEmployed = 0;
         double salaryIncrease = 0;
+        String decimalPreference = request.getParameter("userDecimalPref");
 
        
          
@@ -108,7 +109,7 @@ public class GetSaleriesStats extends HttpServlet {
                    
                     
                     
-                    System.out.println("Salery" + salaryIncrease);
+                    System.out.println("Salary" + salaryIncrease);
                 }
             } catch (SQLException ex) {
                 System.out.println("ResultSet:" + ex);
@@ -120,10 +121,16 @@ public class GetSaleriesStats extends HttpServlet {
         HttpSession session = request.getSession(true);
         session.setAttribute("current_salary", currentSalary);
         session.setAttribute("yearsEmployed", yearsEmployed);
-        session.setAttribute("salaryIncrease", new java.text.DecimalFormat("0.00").format( salaryIncrease ));
         
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ViewSalaryStats.jsp");
-            requestDispatcher.forward(request, response);
+        if(decimalPreference.equals("comma")){
+            session.setAttribute("salaryIncrease", new java.text.DecimalFormat("0,00").format( salaryIncrease ));
+        } else {
+            session.setAttribute("salaryIncrease", new java.text.DecimalFormat("0.00").format( salaryIncrease ));
+        }
+        
+        
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ViewSalaryStats.jsp");
+        requestDispatcher.forward(request, response);
         
     }
 

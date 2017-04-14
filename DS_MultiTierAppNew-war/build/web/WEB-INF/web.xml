@@ -10,7 +10,7 @@
     </servlet>
     <servlet>
         <servlet-name>GetSaleriesStats</servlet-name>
-        <servlet-class>servlets.GetSaleriesStats</servlet-class>
+        <servlet-class>servlets.GetSalariesStats</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>

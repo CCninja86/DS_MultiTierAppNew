@@ -12,6 +12,7 @@ package models;
 public class User {
     
     private String userID;
+    private String decimalType;
 
     
     public User(){
@@ -30,6 +31,20 @@ public class User {
      */
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    /**
+     * @return the decimalType
+     */
+    public String getDecimalType() {
+        return decimalType;
+    }
+
+    /**
+     * @param decimalType the decimalType to set
+     */
+    public void setDecimalType(String decimalType) {
+        this.decimalType = decimalType;
     }
 
 

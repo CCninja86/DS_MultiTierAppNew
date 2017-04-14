@@ -17,7 +17,7 @@
         <nav>
             <div class="nav-wrapper red darken-2">
                 <a class="brand-logo center">View Salary Statistics</a>
-                 <a class="brand-logo left userIdentifier">Welcome, <jsp:getProperty name="user" property="userID"/>!</a>
+                 <a class="brand-logo left userIdentifier">Welcome, Employee <jsp:getProperty name="user" property="userID"/>!</a>
                 <ul id="nav-mobile" class="right">
                     <li><a href="index.jsp">View All Users</a></li>
                 </ul>
@@ -30,7 +30,7 @@
                     if(salary  > 0){
                     out.println(" <h4>Employee has been working for " + request.getSession().getAttribute("yearsEmployed") + " years in this company. <br>"
                             + "He currently earns "  + request.getSession().getAttribute("current_salary") + " NZD .<br>"
-                    + "This is an increase of " + request.getSession().getAttribute("salaryIncrease")  + " % compared to his salary in the beginning. </h4>");
+                    + "This is an increase of " + request.getSession().getAttribute("salaryIncrease")  + "% compared to his salary in the beginning. </h4>");
                 }else{
                         out.println(" <h4>No salary statistics yet</h4>");
                     }

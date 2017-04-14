@@ -28,7 +28,7 @@
         <nav>
             <div class="nav-wrapper red darken-2">
                 <a class="brand-logo center">Employee View</a>
-                <a class="brand-logo left userIdentifier">Welcome, <jsp:getProperty name="user" property="userID"/>!</a>
+                <a class="brand-logo left userIdentifier">Welcome, Employee <jsp:getProperty name="user" property="userID"/>!</a>
             </div>
         </nav>  
 
@@ -48,7 +48,7 @@
             </thead>
 
             <tbody>
-                <%
+                <%                    
                     
                     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
                     
@@ -61,9 +61,10 @@
                         out.print("<td>" + sdf.format(current.getBirthDate()) + "</td>");
                         out.print("<td>" + current.getGender() + "</td>");
                         out.print("<td>" + sdf.format(current.getHireDate()) + "</td>");
+                        
                         out.print("<td><a href=\"EditUser.jsp?id=" + current.getId() + "\" class=\"waves-effect waves-light btn red darken-2\">Edit employee</a>"
                                 + "<a href=\"GetDepartment?id=" + current.getId() + "\" class=\"waves-effect waves-light btn red darken-2\" style=\"margin-left: 5px\">View Department</a>"
-                                        + "<a href=\"GetSaleriesStats?id=" + current.getId() + "\" class=\"waves-effect waves-light btn red darken-2\" style=\"margin-left: 5px\">View salary stats</a><td>");
+                                        + "<a href=\"GetSaleriesStats?id=" + current.getId() + "&userDecimalPref=" + user.getDecimalType() + "\" class=\"waves-effect waves-light btn red darken-2\" style=\"margin-left: 5px\">View salary stats</a><td>");
                     }%>
 
 
