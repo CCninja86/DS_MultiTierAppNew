@@ -24,18 +24,32 @@
         </nav>  
 
         <jsp:useBean id="department" class="models.Department" scope="session"/>
+        <jsp:useBean id="employee" class="models.Employee" scope="session"/>
 
         <br>
         
         <div class="row">
-            <div class="col s12 m6 offset-m3">
-        
-            <h5><% out.print(department.getName());%></h5>
-  
+            <div class="col s12 m6 offset-m3">        
+                <h5><% out.print("Department Information for Employee ID ");%><jsp:getProperty name="employee" property="id"/></h5>  
             </div>
-        </div>
-
+        </div>        
         
+        <table style="width: 75%; margin-left: 12%;">
+            <thead>
+                <tr>
+                    <th>Department Number</th>
+                    <th>Department Name</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><jsp:getProperty name="department" property="id"/></td>
+                    <td><jsp:getProperty name="department" property="name"/></td>
+                </tr>
+
+            </tbody>
+        </table>
         <br>
 
     </body>
