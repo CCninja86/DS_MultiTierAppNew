@@ -22,20 +22,18 @@
     </head>
     <body>
         <jsp:useBean id="myEmployeeBean" class="stateless.EmployeeBean" scope="session"/>
+        <jsp:useBean id="user" class="models.User" scope="session"/>
+        
 
         <nav>
             <div class="nav-wrapper red darken-2">
                 <a class="brand-logo center">Employee View</a>
-
+                <a class="brand-logo left">Welcome, <jsp:getProperty name="user" property="userID"/>!</a>
             </div>
         </nav>  
 
 
     <body>
-
-
-
-
         <table id="employeeList" class="striped centered tablesorter">
             <thead>
                 <tr>
