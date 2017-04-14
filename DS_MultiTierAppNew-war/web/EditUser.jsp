@@ -1,7 +1,7 @@
 <%-- 
     Document   : EditUser
     Created on : 05.04.2017, 15:20:07
-    Author     : Michael
+    Author     : Michael Daschner
     @TODO: Load Userdata to modify into inputfields!
 --%>
 
@@ -23,7 +23,7 @@
         <nav>
             <div class="nav-wrapper red darken-2">
                 <a class="brand-logo center">Modify User</a>
-                <a class="brand-logo left">Welcome, <jsp:getProperty name="user" property="userID"/>!</a>
+                <a class="brand-logo left userIdentifier">Welcome, <jsp:getProperty name="user" property="userID"/>!</a>
                 <ul id="nav-mobile" class="right">
                     <li><a href="index.jsp">View All Users</a></li>
                 </ul>

@@ -25,13 +25,17 @@
                 </ul>
             </div>
         </nav>  
+
+       
         
-        <h1>Employee Not Updated</h1>
-        <br>
-        <br>
-        <h1>Failed to Update Employee with ID <jsp:getProperty name="employee" property="id"/></h1>
-        <br>
-        <br>
-        <p>Reason: </p><%-- [TODO: Error Message Here] --%>
+         <div class="row">
+            <div class="col s12 m6 offset-m3">
+                 <h4>Failed to Update Employee with ID <jsp:getProperty name="employee" property="id"/></h4>
+                  <h5>Reason: <%= request.getAttribute("ErrorMsg") %></h5><%-- [TODO: Error Message Here] --%>
+               
+            </div>
+
+        </div>
+        
     </body>
 </html>

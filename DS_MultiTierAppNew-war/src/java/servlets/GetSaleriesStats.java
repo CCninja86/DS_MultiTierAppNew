@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Michael
+ * @author Michael Daschner
  */
 public class GetSaleriesStats extends HttpServlet {
 
@@ -51,7 +51,7 @@ public class GetSaleriesStats extends HttpServlet {
         int currentSalary = 0, startSalary;
         int yearsEmployed = 0;
         double salaryIncrease = 0;
-        
+
        
          
         try {
@@ -88,10 +88,13 @@ public class GetSaleriesStats extends HttpServlet {
             try {
                 currentSalary = resultSet.getInt(2);
 
-                resultSet = statement.executeQuery("SELECT MIN(from_date) As startdate, salary FROM employees.salaries WHERE emp_no =" + employeeID);
-
-                if (resultSet.next()) {
-                    Date startDate = resultSet.getDate(1);
+                ResultSet resultStartingWage = statement.executeQuery("SELECT MIN(from_date), salary FROM employees.salaries WHERE emp_no =" + employeeID);
+                
+                
+                
+                
+                if (resultStartingWage.next()) {
+                    Date startDate = resultStartingWage.getDate(1);
                     
                     SimpleDateFormat df = new SimpleDateFormat("yyyy");
                     String startYear = df.format(startDate);
@@ -100,18 +103,24 @@ public class GetSaleriesStats extends HttpServlet {
                     
                     yearsEmployed = currentYear - Integer.parseInt(df.format(startDate));
                     //@TODO: Fix salalary increase calculation
-                    salaryIncrease = (currentSalary - resultSet.getInt(2))/currentSalary*100;
                     
+                    salaryIncrease = ((double)(currentSalary - Integer.parseInt(resultStartingWage.getString(2))))/currentSalary*100;
+                   
+                    
+                    
+                    System.out.println("Salery" + salaryIncrease);
                 }
             } catch (SQLException ex) {
+                System.out.println("ResultSet:" + ex);
                 Logger.getLogger(GetDepartment.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
         }
 
         HttpSession session = request.getSession(true);
         session.setAttribute("current_salary", currentSalary);
         session.setAttribute("yearsEmployed", yearsEmployed);
-        session.setAttribute("salaryIncrease", salaryIncrease);
+        session.setAttribute("salaryIncrease", new java.text.DecimalFormat("0.00").format( salaryIncrease ));
         
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ViewSalaryStats.jsp");
             requestDispatcher.forward(request, response);

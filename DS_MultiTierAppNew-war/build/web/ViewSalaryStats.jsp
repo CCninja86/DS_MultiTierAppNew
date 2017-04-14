@@ -1,7 +1,7 @@
 <%-- 
     Document   : ViewSalaryStats
     Created on : 09.04.2017, 16:04:50
-    Author     : Michael
+    Author     : Michael Daschner
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,6 +17,7 @@
         <nav>
             <div class="nav-wrapper red darken-2">
                 <a class="brand-logo center">View Salary Statistics</a>
+                 <a class="brand-logo left userIdentifier">Welcome, <jsp:getProperty name="user" property="userID"/>!</a>
                 <ul id="nav-mobile" class="right">
                     <li><a href="index.jsp">View All Users</a></li>
                 </ul>
@@ -24,12 +25,12 @@
         </nav>  
         
          <div class="row">
-            <div class="col s12 m6 offset-m3">
+            <div class="col s6 offset-s3">
                 <% int salary = (Integer) request.getSession().getAttribute("current_salary");
                     if(salary  > 0){
-                    out.println(" <h4>Employee works for " + request.getSession().getAttribute("yearsEmployed") + " in this company. "
-                            + "He currently earns "  + request.getSession().getAttribute("current_salary") + " NZD ."
-                    + "This is an increase of " + request.getSession().getAttribute("salaryIncrease")  + " compared to his salary in the beginning. </h4>");
+                    out.println(" <h4>Employee has been working for " + request.getSession().getAttribute("yearsEmployed") + " years in this company. <br>"
+                            + "He currently earns "  + request.getSession().getAttribute("current_salary") + " NZD .<br>"
+                    + "This is an increase of " + request.getSession().getAttribute("salaryIncrease")  + " % compared to his salary in the beginning. </h4>");
                 }else{
                         out.println(" <h4>No salary statistics yet</h4>");
                     }

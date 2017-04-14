@@ -68,6 +68,17 @@ public class ModifyUser extends HttpServlet {
             Date birthDate = Date.valueOf(birthDateString);
             Date hireDate = Date.valueOf(hireDateString);
             
+            
+              //Hiredate must not be before birthdate
+            if(hireDate.before(birthDate)){
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/UpdateUnsuccessful.jsp");
+                request.setAttribute("ErrorMsg", "Hire date must be after dirth date");
+                requestDispatcher.forward(request, response);
+            }
+            
+            
+            
+            
             Employee updatedEmployee = new Employee();
             updatedEmployee.setId(employeeID);
             updatedEmployee.setFirstName(changedFirstName);
@@ -76,8 +87,7 @@ public class ModifyUser extends HttpServlet {
             updatedEmployee.setBirthDate(birthDate);
             updatedEmployee.setHireDate(hireDate);
             
-            
-            
+          
                        
             
             
@@ -101,6 +111,7 @@ public class ModifyUser extends HttpServlet {
             } else {
                 // Update wasn't successful
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/UpdateUnsuccessful.jsp");
+                request.setAttribute("ErrorMsg", "Failed to update entry, please try again");
                 requestDispatcher.forward(request, response);
             }
         } catch (SQLException ex) {

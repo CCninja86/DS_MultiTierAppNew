@@ -28,7 +28,7 @@
         <nav>
             <div class="nav-wrapper red darken-2">
                 <a class="brand-logo center">Employee View</a>
-                <a class="brand-logo left">Welcome, <jsp:getProperty name="user" property="userID"/>!</a>
+                <a class="brand-logo left userIdentifier">Welcome, <jsp:getProperty name="user" property="userID"/>!</a>
             </div>
         </nav>  
 

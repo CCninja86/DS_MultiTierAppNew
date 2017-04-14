@@ -7,7 +7,7 @@ package models;
 
 /**
  *
- * @author Michael
+ * @author Michael Daschner
  */
 public class Department {
     private String id;
