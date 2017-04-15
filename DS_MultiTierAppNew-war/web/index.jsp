@@ -64,7 +64,8 @@
                         
                         out.print("<td><a href=\"EditUser.jsp?id=" + current.getId() + "\" class=\"waves-effect waves-light btn red darken-2\">Edit employee</a>"
                                 + "<a href=\"GetDepartment?id=" + current.getId() + "\" class=\"waves-effect waves-light btn red darken-2\" style=\"margin-left: 5px\">View Department</a>"
-                                        + "<a href=\"GetSaleriesStats?id=" + current.getId() + "&userDecimalPref=" + user.getDecimalType() + "\" class=\"waves-effect waves-light btn red darken-2\" style=\"margin-left: 5px\">View salary stats</a><td>");
+                                        + "<a href=\"GetSaleriesStats?id=" + current.getId() + "&userDecimalPref=" + user.getDecimalType() + "\" class=\"waves-effect waves-light btn red darken-2\" style=\"margin-left: 5px\">View salary stats</a>"
+                                                + "<a href=\"DeleteConfirm.jsp?id=" + current.getId() + "\" class=\"waves-effect waves-light btn red darken-2\" style=\"margin-left: 5px\">Delete Employee</a><td>");
                     }%>
 
 

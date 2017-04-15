@@ -6,7 +6,7 @@
     </servlet>
     <servlet>
         <servlet-name>ModifyUser</servlet-name>
-        <servlet-class>servlets.ModifyUser</servlet-class>
+        <servlet-class>servlets.ModifyEmployee</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GetSaleriesStats</servlet-name>

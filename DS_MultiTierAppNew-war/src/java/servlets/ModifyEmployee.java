@@ -29,7 +29,7 @@ import models.Employee;
  *
  * @author Michael
  */
-public class ModifyUser extends HttpServlet {
+public class ModifyEmployee extends HttpServlet {
 
     private String url = "jdbc:mysql://dms-sydney-db.cjztu35wlump.ap-southeast-2.rds.amazonaws.com:3306/employees";
     private String username = "dms_server_user";
@@ -49,8 +49,10 @@ public class ModifyUser extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
         try {
-            response.setContentType("text/html;charset=UTF-8");
+            
             
             
            //new Driver();
@@ -115,7 +117,7 @@ public class ModifyUser extends HttpServlet {
                 requestDispatcher.forward(request, response);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ModifyUser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModifyEmployee.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
