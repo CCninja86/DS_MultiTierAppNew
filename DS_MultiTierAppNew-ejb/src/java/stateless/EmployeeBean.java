@@ -43,6 +43,7 @@ public class EmployeeBean implements EmployeeBeanRemote {
             statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM employees.employees LIMIT " + limit);
+            
 
             Employee newEmployee;
 
