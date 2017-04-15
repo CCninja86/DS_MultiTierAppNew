@@ -52,7 +52,7 @@
                     
                     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
                     
-                    ArrayList<Employee> employees = (ArrayList) myEmployeeBean.getEmployees(50);
+                    ArrayList<Employee> employees = (ArrayList) myEmployeeBean.getEmployees(250);
                     for (Employee current : employees) {
                         out.print("<tr>");
                         out.print("<td>" + current.getId() + "</td>");
@@ -72,11 +72,9 @@
             </tbody>
         </table>
         <script>
-            $(document).ready(function ()
-            {
-                $("#employeeList").tablesorter({headers: {6: {sorter: false}}});
-            }
-            );
+            $(document).ready(function (){
+                $("#employeeList").tablesorter({headers: {6: {sorter: false}}});           
+            });
 
         </script>
     </body>

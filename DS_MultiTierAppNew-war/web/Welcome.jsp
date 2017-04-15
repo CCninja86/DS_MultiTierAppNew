@@ -53,8 +53,9 @@
                     <option value="" disabled selected>Choose an option</option>
                     <option value="dot">.</option>
                     <option value="comma">,</option>
-                </select>                        
-
+                </select>    
+                <br>
+                <br>
                 <br>
                 <div class="col s9">
                 </div>
