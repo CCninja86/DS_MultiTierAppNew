@@ -26,11 +26,11 @@
         
          <div class="row">
             <div class="col s6 offset-s3">
-                <% int salary = (Integer) request.getSession().getAttribute("current_salary");
+                <% int salary = (Integer) request.getAttribute("current_salary");
                     if(salary  > 0){
-                    out.println(" <h4>Employee has been working for " + request.getSession().getAttribute("yearsEmployed") + " years in this company. <br>"
-                            + "He currently earns "  + request.getSession().getAttribute("current_salary") + " NZD .<br>"
-                    + "This is an increase of " + request.getSession().getAttribute("salaryIncrease")  + "% compared to his salary in the beginning. </h4>");
+                    out.println(" <h4>Employee has been working for " + request.getAttribute("yearsEmployed") + " years in this company. <br>"
+                            + "He currently earns "  + request.getAttribute("current_salary") + " NZD .<br>"
+                    + "This is an increase of " + request.getAttribute("salaryIncrease")  + "% compared to his salary in the beginning. </h4>");
                 }else{
                         out.println(" <h4>No salary statistics yet</h4>");
                     }

@@ -118,14 +118,16 @@ public class GetSalariesStats extends HttpServlet {
             }
         }
 
-        HttpSession session = request.getSession(true);
-        session.setAttribute("current_salary", currentSalary);
-        session.setAttribute("yearsEmployed", yearsEmployed);
+        HttpSession session = request.getSession(true);        
+//        session.setAttribute("current_salary", currentSalary);
+//        session.setAttribute("yearsEmployed", yearsEmployed);
+        request.setAttribute("current_salary", currentSalary);
+        request.setAttribute("yearsEmployed", yearsEmployed);
         
         if(decimalPreference.equals("comma")){
-            session.setAttribute("salaryIncrease", new java.text.DecimalFormat("0,00").format( salaryIncrease ));
+            request.setAttribute("salaryIncrease", new java.text.DecimalFormat("0,00").format( salaryIncrease ));
         } else {
-            session.setAttribute("salaryIncrease", new java.text.DecimalFormat("0.00").format( salaryIncrease ));
+            request.setAttribute("salaryIncrease", new java.text.DecimalFormat("0.00").format( salaryIncrease ));
         }
         
         

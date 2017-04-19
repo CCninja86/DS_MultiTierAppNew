@@ -16,10 +16,16 @@ import javax.ejb.LocalBean;
 @LocalBean
 public class UserBean implements UserBeanRemote {
 
-    private String username;
+    private String userID;
+    private String decimalType;
     
     @Override
-    public String getUsername(){
-        return this.username;
+    public String getUserID(){
+        return this.userID;
+    }
+    
+    @Override
+    public String getDecimalType(){
+        return this.decimalType;
     }
 }

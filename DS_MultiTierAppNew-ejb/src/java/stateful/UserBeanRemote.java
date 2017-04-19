@@ -11,6 +11,7 @@ package stateful;
  */
 public interface UserBeanRemote {
     
-    public String getUsername();
+    public String getUserID();
+    public String getDecimalType();
     
 }
